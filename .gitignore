@@ -1,2 +1,4 @@
 # Ignore local backup config file
 local_backup.config
+
+.idea/

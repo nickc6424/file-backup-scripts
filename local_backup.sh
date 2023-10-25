@@ -6,7 +6,7 @@
 ########################
 
 ##### Main script #####
-echo "Running local Ubuntu backup script..."
+echo "Running local Fedora backup script..."
 
 # Path to config file
 . ./local_backup.config
@@ -14,10 +14,10 @@ echo "Running local Ubuntu backup script..."
 # Set variables
 today=$(date +'%Y%m%d_%H%M%S')
 files_to_backup="/home/nick/Documents/documents_backed_up/ /home/nick/Music/ /home/nick/Pictures/"
-local_output_directory="/home/nick/backups/ubuntu/"
-tar_file_name="ubuntu_backup_$today.tar"
+local_output_directory="/home/nick/backups/fedora/"
+tar_file_name="fedora_backup_$today.tar"
 zip_file_name="$tar_file_name.7z"
-backup_destination="onedrive_nc:/Backups/Ubuntu"
+backup_destination="onedrive_nc:/Backups/Fedora"
 
 # Archive specified files and then encrypt
 echo "Created encrypted backup file..."
