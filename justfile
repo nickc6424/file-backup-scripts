@@ -11,22 +11,25 @@ mount_int := "1"
 # Initialise a new borg repository
 init:
 	-borg init --encryption=repokey {{ repo_path }}
-	# For the password chosen, set it as an environment variable with:
-	# export local_backups_password=<password>
+	# For the password chosen, put it in local_backup.config in the format:
+	# password="<password>"
 
 # Creates a new archive within the repository
 backup:
+	local_backups_password="$(grep -oP '(?<=password=").*(?=")' local_backup.config)" \
 	archive_name="fedora_backup_$(date +'%Y%m%d_%H%M%S')"; \
 	files_to_backup="/home/nick/Documents/documents_backed_up/ /home/nick/Music/ /home/nick/Pictures/"; \
 	BORG_PASSPHRASE=${local_backups_password} borg create {{ repo_path }}::${archive_name} ${files_to_backup}
 
 # Lists all archives in the repository
 list:
+	local_backups_password="$(grep -oP '(?<=password=").*(?=")' local_backup.config)" \
 	BORG_PASSPHRASE=${local_backups_password} borg list {{ repo_path }}
 
 # Mount an archive, defaulting to the most recent. Mount the nth most recent with 'just mount_int="n" mount'
 mount: unmount
 	-mkdir {{ mount_path }} -p
+	local_backups_password="$(grep -oP '(?<=password=").*(?=")' local_backup.config)" \
 	archive_name=$(BORG_PASSPHRASE=${local_backups_password} borg list {{ repo_path }} | tail -{{ mount_int }} | head -1 | cut -f1 -d " "); \
 	BORG_PASSPHRASE=${local_backups_password} borg mount {{ repo_path }}::${archive_name} {{ mount_path }}
 
