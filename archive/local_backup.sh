@@ -13,7 +13,7 @@ echo "Running local Fedora backup script..."
 
 # Set variables
 today=$(date +'%Y%m%d_%H%M%S')
-files_to_backup="/home/nick/Documents/documents_backed_up/ /home/nick/Music/ /home/nick/Pictures/"
+files_to_backup="/home/nick/Documents/documents_backed_up/ /home/nick/Music/"
 local_output_directory="/home/nick/backups/fedora/"
 tar_file_name="fedora_backup_$today.tar"
 zip_file_name="$tar_file_name.7z"
@@ -25,7 +25,7 @@ tar -c --to-stdout $files_to_backup | 7za a -si -mhe=on -p$password $local_outpu
 
 # Copy zip file to backup destination
 echo "Copying encrypted backup file to Onedrive..."
-rclone copy --progress $local_output_directory$zip_file_name $backup_destination
+#rclone copy --progress $local_output_directory$zip_file_name $backup_destination
 
 echo "Local backup complete."
 
