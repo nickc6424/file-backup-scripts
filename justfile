@@ -10,8 +10,7 @@ mount_path := "~/Downloads/mounted_borg_archive"
 cloud_sync_path := "onedrive_nc:/Backups/fedora_39/borg_backups_repo_cloud/"
 cloud_restore_path := "/home/nick/Downloads/borg_backups_repo_cloud/"
 files_to_backup := "/home/nick/Documents/documents_backed_up/ /home/nick/Music/ /home/nick/Pictures/"
-# TODO: find Joplin's files and include them
-# TODO: consider automating Bitwarden extract and backup?
+
 
 # Initialise a new borg repository
 @init:
