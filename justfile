@@ -9,7 +9,7 @@ repo_path_cloud := "~/backups/fedora/borg_backups_repo_cloud"
 mount_path := "~/Downloads/mounted_borg_archive"
 cloud_sync_path := "onedrive_nc:/Backups/fedora/borg_backups_repo_cloud/"
 cloud_restore_path := "/home/nick/Downloads/borg_backups_repo_cloud/"
-files_to_backup := "/home/nick/Documents/documents_backed_up/ /home/nick/Music/ /home/nick/Pictures/"
+files_to_backup := "/home/nick/Documents/documents_backed_up/ /home/nick/Music/ /home/nick/Pictures/ /home/nick/.config/joplin-desktop/"
 
 
 # Initialise a new borg repository
